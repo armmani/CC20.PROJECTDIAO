@@ -1,6 +1,27 @@
+import jwt from 'jsonwebtoken'
+import createErrorUtil from '../utils/createError.util.js'
+
 export const authMiddleware = (req, res, next) => {
-  if (true) {
-    console.log("authMiddleware")
-    next()
+ try {
+  const header = req.headers.authorization
+
+  if(!header) {
+    createErrorUtil(401, "Token Unauthorized")
   }
+  const token = header.split(" ")[1]
+  // console.log('token', token)
+
+  jwt.verify(token, process.env.JWT_SECRET, (error, decode) => {
+    // console.log('error', error)
+    // console.log('decode', decode)
+    if(error) {
+      createErrorUtil(401, "Token is Invalid")
+    }
+
+    req.user = decode
+    next()
+  })
+ } catch (error) {
+    next(error)
+ }
 }

@@ -14,7 +14,7 @@ app.use("/auth", authRoute)
 app.use("/users", userRoute)
 
 app.use((err,req,res,next) => {
-  res.status(err.code || 500).json({message: err.message || 'something LONG'})
+  res.status(err.statusCode || 500).json({message: err.message || 'something LONG'})
 })
 
 const PORT = process.env.PORT || 8899;

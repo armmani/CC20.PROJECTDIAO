@@ -10,11 +10,12 @@ datasource db {
 
 model User {
   id        Int      @id @default(autoincrement())
-  email     String   @unique
+  username  String   @unique
   password  String
-  role      Role
+  role      Role     @default(VET)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  status    Status   @default(ACTIVE)
 
   visits        Visit[]
   ownersCreated Owner[]           @relation("OwnerCreatedBy")
@@ -61,12 +62,12 @@ model Visit {
 model Pet {
   id            Int      @id @default(autoincrement())
   pet_name      String
-  species       String
+  species       Species
   breed         String
-  gender        String
-  sterilization Boolean
+  gender        Gender
+  sterilization Boolean  @default(false)
   birth_date    DateTime
-  status        String
+  status        Status   @default(ACTIVE)
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
   createdById   Int
@@ -84,6 +85,16 @@ enum Species {
   FELINE
   EXOTIC
   OTHERS
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+enum Status {
+  ACTIVE
+  INACTIVE
 }
 
 model Owner {

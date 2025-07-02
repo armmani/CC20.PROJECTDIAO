@@ -59,82 +59,82 @@ Join table for procedures performed during a visit.
 
 ## Auth
 
-| Method | Endpoint         | Description             |
-|--------|------------------|-------------------------|
-| POST   | /auth/login      | Login                   |
-| POST   | /auth/register   | Register new user       |
+|DONE| Path | Method | Authen | Params | Query | Body | Description |
+| :---| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+|[x]| **/auth/login** | `post` | - | - | - | `{email, password}` | Login |
+|[x]| **/auth/register** | `post` | - | - | - | `{email, password, role}` | Register new user |
 
 ## Users
 
-| Method | Endpoint     | Description         |
-|--------|--------------|---------------------|
-| GET    | /users       | Get all users       |
-| GET    | /users/:id   | Get user by ID      |
-| POST   | /users       | Create new user     |
-| PATCH    | /users/:id   | Update user         |
+|DONE| Path | Method | Authen | Params | Query | Body | Description |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+|[x]| **/users** | `get` | y | - | - | - | Get all users |
+|[x]| **/users/:id** | `get` | y | `:id` | - | - | Get user by ID |
+|[x]| **/users** | `post` | y | - | - | `{email, password, role}` | Create new user |
+|[x]| **/users/:id** | `patch` | y | `:id` | - | `{email?, password?, role?}` | Update user |
 
 ## Owners
 
-| Method | Endpoint       | Description         |
-|--------|----------------|---------------------|
-| GET    | /owners        | Get all owners      |
-| GET    | /owners/:id    | Get owner by ID     |
-| POST   | /owners        | Create new owner    |
-| PATCH  | /owners/:id    | Update owner        |
+|DONE| Path | Method | Authen | Params | Query | Body | Description |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+|[]| **/owners** | `get` | y | - | - | - | Get all owners |
+|[]| **/owners/:id** | `get` | y | `:id` | - | - | Get owner by ID |
+|[]| **/owners** | `post` | y | - | - | `{owner_name, tel_number, ...}` | Create new owner |
+|[]| **/owners/:id** | `patch` | y | `:id` | - | `{owner_name?, tel_number?, ...}` | Update owner |
 
 ## Pets
 
-| Method | Endpoint                  | Description            |
-|--------|---------------------------|------------------------|
-| GET    | /pets                     | Get all pets           |
-| GET    | /pets/:id                 | Get pet by ID          |
-| POST   | /pets                     | Create new pet         |
-| PATCH  | /pets/:id                 | Update pet             |
-| GET    | /owners/:ownerId/pets     | Get pets by owner      |
+|DONE| Path | Method | Authen | Params | Query | Body | Description |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+|[]| **/pets** | `get` | y | - | - | - | Get all pets |
+|[]| **/pets/:id** | `get` | y | `:id` | - | - | Get pet by ID |
+|[]| **/pets** | `post` | y | - | - | `{pet_name, species, ownerId, ...}` | Create new pet |
+|[]| **/pets/:id** | `patch` | y | `:id` | - | `{pet_name?, status?, ...}` | Update pet |
+|[]| **/owners/:ownerId/pets** | `get` | y | `:ownerId` | - | - | Get pets by owner |
 
 ## Visits
 
-| Method | Endpoint       | Description           |
-|--------|----------------|-----------------------|
-| GET    | /visits        | Get all visits        |
-| GET    | /visits/:id    | Get visit by ID       |
-| POST   | /visits        | Create new visit      |
-| PATCH  | /visits/:id    | Update visit          |
+|DONE| Path | Method | Authen | Params | Query | Body | Description |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+|[]| **/visits** | `get` | y | - | - | - | Get all visits |
+|[]| **/visits/:id** | `get` | y | `:id` | - | - | Get visit by ID |
+|[]| **/visits** | `post` | y | - | - | `{cc, hx, pe, dx, petId, userId, ...}` | Create new visit |
+|[]| **/visits/:id** | `patch` | y | `:id` | - | `{cc?, hx?, pe?, dx?, ...}` | Update visit |
 
 ## Medications
 
-| Method | Endpoint           | Description           |
-|--------|--------------------|-----------------------|
-| GET    | /medications       | Get all medications   |
-| GET    | /medications/:id   | Get medication by ID  |
-| POST   | /medications       | Add new medication    |
-| PUT    | /medications/:id   | Update medication     |
-| DELETE | /medications/:id   | Delete medication     |
+|DONE| Path | Method | Authen | Params | Query | Body | Description |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+|[]| **/medications** | `get` | y | - | - | - | Get all medications |
+|[]| **/medications/:id** | `get` | y | `:id` | - | - | Get medication by ID |
+|[]| **/medications** | `post` | y | - | - | `{name, type, unit, cost}` | Add new medication |
+|[]| **/medications/:id** | `put` | y | `:id` | - | `{name, type, unit, cost}` | Update medication |
+|[]| **/medications/:id** | `delete` | y | `:id` | - | - | Delete medication |
 
 ## Procedures
 
-| Method | Endpoint           | Description         |
-|--------|--------------------|---------------------|
-| GET    | /procedures        | Get all procedures  |
-| GET    | /procedures/:id    | Get procedure by ID |
-| POST   | /procedures        | Add new procedure   |
-| PATCH  | /procedures/:id    | Update procedure    |
-| DELETE | /procedures/:id    | Delete procedure    |
+|DONE| Path | Method | Authen | Params | Query | Body | Description |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+|[]| **/procedures** | `get` | y | - | - | - | Get all procedures |
+|[]| **/procedures/:id** | `get` | y | `:id` | - | - | Get procedure by ID |
+|[]| **/procedures** | `post` | y | - | - | `{name, description, cost}` | Add new procedure |
+|[]| **/procedures/:id** | `patch` | y | `:id` | - | `{name?, description?, cost?}` | Update procedure |
+|[]| **/procedures/:id** | `delete` | y | `:id` | - | - | Delete procedure |
 
 ## Visit-Medications
 
-| Method | Endpoint                       | Description                          |
-|--------|--------------------------------|--------------------------------------|
-| GET    | /visits/:visitId/medications   | Get all medications for a visit     |
-| POST   | /visits/:visitId/medications   | Add medication to a visit           |
-| PATCH  | /visit-medications/:id         | Update medication record on a visit |
-| DELETE | /visit-medications/:id         | Remove medication from a visit      |
+|DONE| Path | Method | Authen | Params | Query | Body | Description |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+|[]| **/visits/:visitId/medications** | `get` | y | `:visitId` | - | - | Get all medications for a visit |
+|[]| **/visits/:visitId/medications** | `post` | y | `:visitId` | - | `{medicationId, dosage, ...}`| Add medication to a visit |
+|[]| **/visit-medications/:id** | `patch` | y | `:id` | - | `{dosage?, quantity?, ...}` | Update medication record on a visit |
+|[]| **/visit-medications/:id** | `delete` | y | `:id` | - | - | Remove medication from a visit |
 
 ## Visit-Procedures
 
-| Method | Endpoint                        | Description                           |
-|--------|----------------------------------|---------------------------------------|
-| GET    | /visits/:visitId/procedures     | Get all procedures for a visit       |
-| POST   | /visits/:visitId/procedures     | Add procedure to a visit             |
-| PATCH  | /visit-procedures/:id           | Update procedure record on a visit   |
-| DELETE | /visit-procedures/:id           | Remove procedure from a visit        |
+|DONE| Path | Method | Authen | Params | Query | Body | Description |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+|[]| **/visits/:visitId/procedures** | `get` | y | `:visitId` | - | - | Get all procedures for a visit |
+|[]| **/visits/:visitId/procedures** | `post` | y | `:visitId` | - | `{procedureId, quantity, ...}` | Add procedure to a visit |
+|[]| **/visit-procedures/:id** | `patch` | y | `:id` | - | `{quantity?, unit?, ...}` | Update procedure record on a visit |
+|[]| **/visit-procedures/:id** | `delete` | y | `:id` | - | - | Remove procedure from a visit |
