@@ -1,29 +1,19 @@
-import prisma from "../configs/prisma.config.js";
 import createErrorUtil from "../utils/createError.util.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import * as authService from '../services/auth.service.js'
 
 export const register = async (req, res, next) => {
   try {
     const { username, password } = req.body;
-    console.log("username", username);
-    const user = await prisma.user.findFirst({
-      where: { username },
-    });
-    console.log(user);
+    const user = await authService.findUser(username)
     if (user) {
       createErrorUtil(400, "Username is already EXISTED");
     }
-    const hashPassword = bcrypt.hashSync(password, 10);
-    console.log("hashPassword", hashPassword);
 
-    const result = await prisma.user.create({
-      data: {
-        username,
-        password: hashPassword,
-      },
-      omit: { password: true },
-    });
+    const hashPassword = bcrypt.hashSync(password, 10);
+
+    const result = await authService.register(username, password, hashPassword);
     res.json({ message: "Register Successful", result });
   } catch (error) {
     next(error);
@@ -33,10 +23,8 @@ export const register = async (req, res, next) => {
 export const login = async (req, res, next) => {
   try {
     const { username, password } = req.body;
-    const user = await prisma.user.findFirst({
-      where: { username },
-    });
-    // console.log("user", user);
+    const user = await authService.login(username, password)
+
     if (!user) {
       createErrorUtil(400, "Login Username or Password is not Correct");
     }

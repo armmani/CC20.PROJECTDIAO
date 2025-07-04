@@ -14,7 +14,6 @@ export const authMiddleware = (req, res, next) => {
       if (error) {
         createErrorUtil(401, "Token is Invalid");
       }
-
       req.user = decode;
       next();
     });

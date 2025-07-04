@@ -96,20 +96,20 @@ Join table for procedures performed during a visit.
 
 |DONE| Path | Method | Authen | Params | Query | Body | Description |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-|[]| **/visits** | `get` | y | - | - | - | Get all visits |
-|[]| **/visits/:id** | `get` | y | `:id` | - | - | Get visit by ID |
-|[]| **/visits** | `post` | y | - | - | `{cc, hx, pe, dx, petId, userId, ...}` | Create new visit |
-|[]| **/visits/:id** | `patch` | y | `:id` | - | `{cc?, hx?, pe?, dx?, ...}` | Update visit |
+|[x]| **/visits** | `get` | y | - | - | - | Get all visits |
+|[x]| **/visits/:id** | `get` | y | `:id` | - | - | Get visit by ID |
+|[x]| **/visits** | `post` | y | - | - | `{cc, hx, pe, dx, petId, userId, ...}` | Create new visit |
+|[x]| **/visits/:id** | `patch` | y | `:id` | - | `{cc?, hx?, pe?, dx?, ...}` | Update visit |
 
 ## Medications
 
 |DONE| Path | Method | Authen | Params | Query | Body | Description |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-|[]| **/medications** | `get` | y | - | - | - | Get all medications |
-|[]| **/medications/:id** | `get` | y | `:id` | - | - | Get medication by ID |
-|[]| **/medications** | `post` | y | - | - | `{name, type, unit, cost}` | Add new medication |
-|[]| **/medications/:id** | `patch` | y | `:id` | - | `{name, type, unit, cost}` | Update medication |
-|[]| **/medications/:id** | `delete` | y | `:id` | - | - | Delete medication |
+|[x]| **/medications** | `get` | y | - | - | - | Get all medications |
+|[x]| **/medications/:id** | `get` | y | `:id` | - | - | Get medication by ID |
+|[x]| **/medications** | `post` | y | - | - | `{name, type, unit, cost}` | Add new medication |
+|[x]| **/medications/:id** | `patch` | y | `:id` | - | `{name, type, unit, cost}` | Update medication |
+|[x]| **/medications/:id** | `delete` | y | `:id` | - | - | Delete medication |
 
 ## Procedures
 

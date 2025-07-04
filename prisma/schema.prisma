@@ -42,7 +42,7 @@ model Visit {
   cc               String
   hx               String
   pe               String
-  weight           Int
+  weight           Float
   dx               String
   cost             Decimal           @db.Decimal(10, 2)
   createdAt        DateTime          @default(now())
@@ -52,7 +52,7 @@ model Visit {
   createdById      Int
   creator          User?             @relation("VisitCreatedBy", fields: [createdById], references: [id])
   updatedById      Int?
-  updatedBy        User?             @relation("VisitUpdatedBy", fields: [updatedById], references: [id])
+  updater          User?             @relation("VisitUpdatedBy", fields: [updatedById], references: [id])
   visitmedications VisitMedication[]
   visitprocedures  VisitProcedure[]
   pet              Pet?              @relation(fields: [petId], references: [id])
@@ -76,7 +76,7 @@ model Pet {
   updater       User?    @relation("PetUpdatedBy", fields: [updatedById], references: [id])
 
   visits  Visit[]
-  owner   Owner  @relation(fields: [ownerId], references: [id])
+  owner   Owner   @relation(fields: [ownerId], references: [id])
   ownerId Int
 }
 
