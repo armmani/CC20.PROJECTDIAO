@@ -77,20 +77,20 @@ Join table for procedures performed during a visit.
 
 |DONE| Path | Method | Authen | Params | Query | Body | Description |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-|[]| **/owners** | `get` | y | - | - | - | Get all owners |
-|[]| **/owners/:id** | `get` | y | `:id` | - | - | Get owner by ID |
-|[]| **/owners** | `post` | y | - | - | `{owner_name, tel_number, ...}` | Create new owner |
-|[]| **/owners/:id** | `patch` | y | `:id` | - | `{owner_name?, tel_number?, ...}` | Update owner |
+|[x]| **/owners** | `get` | y | - | - | - | Get all owners |
+|[x]| **/owners/:id** | `get` | y | `:id` | - | - | Get owner by ID |
+|[x]| **/owners** | `post` | y | - | - | `{owner_name, tel_number, ...}` | Create new owner |
+|[x]| **/owners/:id** | `patch` | y | `:id` | - | `{owner_name?, tel_number?, ...}` | Update owner |
 
 ## Pets
 
 |DONE| Path | Method | Authen | Params | Query | Body | Description |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-|[]| **/pets** | `get` | y | - | - | - | Get all pets |
-|[]| **/pets/:id** | `get` | y | `:id` | - | - | Get pet by ID |
-|[]| **/pets** | `post` | y | - | - | `{pet_name, species, ownerId, ...}` | Create new pet |
-|[]| **/pets/:id** | `patch` | y | `:id` | - | `{pet_name?, status?, ...}` | Update pet |
-|[]| **/owners/:ownerId/pets** | `get` | y | `:ownerId` | - | - | Get pets by owner |
+|[x]| **/pets** | `get` | y | - | - | - | Get all pets |
+|[x]| **/pets/:id** | `get` | y | `:id` | - | - | Get pet by ID |
+|[x]| **/pets** | `post` | y | - | - | `{pet_name, species, ownerId, ...}` | Create new pet |
+|[x]| **/pets/:id** | `patch` | y | `:id` | - | `{pet_name?, status?, ...}` | Update pet |
+|[x]| **/owners/:ownerId/pets** | `get` | y | `:ownerId` | - | - | Get pets by owner |
 
 ## Visits
 
@@ -108,7 +108,7 @@ Join table for procedures performed during a visit.
 |[]| **/medications** | `get` | y | - | - | - | Get all medications |
 |[]| **/medications/:id** | `get` | y | `:id` | - | - | Get medication by ID |
 |[]| **/medications** | `post` | y | - | - | `{name, type, unit, cost}` | Add new medication |
-|[]| **/medications/:id** | `put` | y | `:id` | - | `{name, type, unit, cost}` | Update medication |
+|[]| **/medications/:id** | `patch` | y | `:id` | - | `{name, type, unit, cost}` | Update medication |
 |[]| **/medications/:id** | `delete` | y | `:id` | - | - | Delete medication |
 
 ## Procedures

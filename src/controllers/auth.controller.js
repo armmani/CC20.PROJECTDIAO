@@ -36,7 +36,7 @@ export const login = async (req, res, next) => {
     const user = await prisma.user.findFirst({
       where: { username },
     });
-    console.log("user", user);
+    // console.log("user", user);
     if (!user) {
       createErrorUtil(400, "Login Username or Password is not Correct");
     }
@@ -52,16 +52,15 @@ export const login = async (req, res, next) => {
       role: user.role,
     };
 
-    const token = jwt.sign(
-      payload,
-      process.env.JWT_SECRET,
-      { expiresIn: "3d" },
-    );
+    const token = jwt.sign(payload, process.env.JWT_SECRET, {
+      expiresIn: "3d",
+      algorithm: "HS256"
+    });
     res.json({
       message: `Welcome ${user.username} as ${user.role}`,
       payload,
       token,
-    })
+    });
   } catch (error) {
     next(error);
   }

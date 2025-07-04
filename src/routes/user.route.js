@@ -10,9 +10,9 @@ import { authMiddleware } from "../middlewares/auth.middleware.js";
 const userRoute = express.Router();
 
 // Endpoint http://localhost:6969/users
-userRoute.get("/", getAllUsers);
+userRoute.get("/", authMiddleware, getAllUsers);
 userRoute.get("/:id", authMiddleware, getUserById);
-userRoute.post("/", createUser);
+userRoute.post("/", authMiddleware, createUser);
 userRoute.patch("/:id", authMiddleware, updateUser);
 
 export default userRoute;

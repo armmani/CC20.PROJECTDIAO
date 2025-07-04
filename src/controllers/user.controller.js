@@ -8,7 +8,7 @@ export const getAllUsers = async (req, res, next) => {
       omit: { password: true },
     });
     
-    res.json({ message: "Get ALL Users", result });
+    res.json({ message: "List ALL Users", result });
   } catch (error) {
     next(error);
   }
@@ -24,7 +24,7 @@ export const getUserById = async (req, res, next) => {
       omit: { password: true },
     });
 
-    res.json({ message: "Get User by ID", result });
+    res.json({ message: `This is User ID ${id}`, result });
   } catch (error) {
     next(error);
   }

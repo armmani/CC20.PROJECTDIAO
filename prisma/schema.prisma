@@ -76,8 +76,8 @@ model Pet {
   updater       User?    @relation("PetUpdatedBy", fields: [updatedById], references: [id])
 
   visits  Visit[]
-  owner   Owner?  @relation(fields: [ownerId], references: [id])
-  ownerId Int?
+  owner   Owner  @relation(fields: [ownerId], references: [id])
+  ownerId Int
 }
 
 enum Species {
