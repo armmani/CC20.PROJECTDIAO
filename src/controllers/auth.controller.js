@@ -13,7 +13,7 @@ export const register = async (req, res, next) => {
 
     const hashPassword = bcrypt.hashSync(password, 10);
 
-    const result = await authService.register(username, password, hashPassword);
+    const result = await authService.register(username, hashPassword);
     res.json({ message: "Register Successful", result });
   } catch (error) {
     next(error);

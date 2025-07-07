@@ -115,26 +115,26 @@ Join table for procedures performed during a visit.
 
 |DONE| Path | Method | Authen | Params | Query | Body | Description |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-|[]| **/procedures** | `get` | y | - | - | - | Get all procedures |
-|[]| **/procedures/:id** | `get` | y | `:id` | - | - | Get procedure by ID |
-|[]| **/procedures** | `post` | y | - | - | `{name, description, cost}` | Add new procedure |
-|[]| **/procedures/:id** | `patch` | y | `:id` | - | `{name?, description?, cost?}` | Update procedure |
-|[]| **/procedures/:id** | `delete` | y | `:id` | - | - | Delete procedure |
+|[x]| **/procedures** | `get` | y | - | - | - | Get all procedures |
+|[x]| **/procedures/:id** | `get` | y | `:id` | - | - | Get procedure by ID |
+|[x]| **/procedures** | `post` | y | - | - | `{name, description, cost}` | Add new procedure |
+|[x]| **/procedures/:id** | `patch` | y | `:id` | - | `{name?, description?, cost?}` | Update procedure |
+|[x]| **/procedures/:id** | `delete` | y | `:id` | - | - | Delete procedure |
 
 ## Visit-Medications
 
 |DONE| Path | Method | Authen | Params | Query | Body | Description |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-|[]| **/visits/:visitId/medications** | `get` | y | `:visitId` | - | - | Get all medications for a visit |
-|[]| **/visits/:visitId/medications** | `post` | y | `:visitId` | - | `{medicationId, dosage, ...}`| Add medication to a visit |
-|[]| **/visit-medications/:id** | `patch` | y | `:id` | - | `{dosage?, quantity?, ...}` | Update medication record on a visit |
-|[]| **/visit-medications/:id** | `delete` | y | `:id` | - | - | Remove medication from a visit |
+|[x]| **/visits/:visitId/medications** | `get` | y | `:visitId` | - | - | Get all medications for a visit |
+|[x]| **/visits/:visitId/medications** | `post` | y | `:visitId` | - | `{medicationId, dosage, ...}`| Add medication to a visit |
+|[x]| **/visit-medications/:id** | `patch` | y | `:id` | - | `{dosage?, quantity?, ...}` | Update medication record on a visit |
+|[x]| **/visit-medications/:id** | `delete` | y | `:id` | - | - | Remove medication from a visit |
 
 ## Visit-Procedures
 
 |DONE| Path | Method | Authen | Params | Query | Body | Description |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-|[]| **/visits/:visitId/procedures** | `get` | y | `:visitId` | - | - | Get all procedures for a visit |
-|[]| **/visits/:visitId/procedures** | `post` | y | `:visitId` | - | `{procedureId, quantity, ...}` | Add procedure to a visit |
-|[]| **/visit-procedures/:id** | `patch` | y | `:id` | - | `{quantity?, unit?, ...}` | Update procedure record on a visit |
-|[]| **/visit-procedures/:id** | `delete` | y | `:id` | - | - | Remove procedure from a visit |
+|[x]| **/visits/:visitId/procedures** | `get` | y | `:visitId` | - | - | Get all procedures for a visit |
+|[x]| **/visits/:visitId/procedures** | `post` | y | `:visitId` | - | `{procedureId, quantity, ...}` | Add procedure to a visit |
+|[x]| **/visit-procedures/:id** | `patch` | y | `:id` | - | `{quantity?, unit?, ...}` | Update procedure record on a visit |
+|[x]| **/visit-procedures/:id** | `delete` | y | `:id` | - | - | Remove procedure from a visit |

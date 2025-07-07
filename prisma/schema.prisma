@@ -17,19 +17,21 @@ model User {
   updatedAt DateTime @updatedAt
   status    Status   @default(ACTIVE)
 
-  visits        Visit[]
-  ownersCreated Owner[]           @relation("OwnerCreatedBy")
-  ownersUpdated Owner[]           @relation("OwnerUpdatedBy")
-  petsCreated   Pet[]             @relation("PetCreatedBy")
-  petsUpdated   Pet[]             @relation("PetUpdatedBy")
-  medsCreated   Medication[]      @relation("MedCreatedBy")
-  medsUpdated   Medication[]      @relation("MedUpdatedBy")
-  procsCreated  Procedure[]       @relation("ProcCreatedBy")
-  procsUpdated  Procedure[]       @relation("ProcUpdatedBy")
-  visitCreated  Visit[]           @relation("VisitCreatedBy")
-  visitUpdated  Visit[]           @relation("VisitUpdatedBy")
-  visitMeds     VisitMedication[]
-  visitProcs    VisitProcedure[]
+  visits            Visit[]
+  ownersCreated     Owner[]           @relation("OwnerCreatedBy")
+  ownersUpdated     Owner[]           @relation("OwnerUpdatedBy")
+  petsCreated       Pet[]             @relation("PetCreatedBy")
+  petsUpdated       Pet[]             @relation("PetUpdatedBy")
+  medsCreated       Medication[]      @relation("MedCreatedBy")
+  medsUpdated       Medication[]      @relation("MedUpdatedBy")
+  procsCreated      Procedure[]       @relation("ProcCreatedBy")
+  procsUpdated      Procedure[]       @relation("ProcUpdatedBy")
+  visitCreated      Visit[]           @relation("VisitCreatedBy")
+  visitUpdated      Visit[]           @relation("VisitUpdatedBy")
+  visitMedication   VisitMedication[]
+  visitProcedure    VisitProcedure[]
+  visitMedsUpdated  VisitMedication[] @relation("VisitMedUpdatedBy")
+  visitProcsUpdated VisitProcedure[]  @relation("VisitProcUpdatedBy")
 }
 
 enum Role {
@@ -74,10 +76,9 @@ model Pet {
   creator       User     @relation("PetCreatedBy", fields: [createdById], references: [id])
   updatedById   Int?
   updater       User?    @relation("PetUpdatedBy", fields: [updatedById], references: [id])
-
-  visits  Visit[]
-  owner   Owner   @relation(fields: [ownerId], references: [id])
-  ownerId Int
+  visits        Visit[]
+  owner         Owner    @relation(fields: [ownerId], references: [id])
+  ownerId       Int
 }
 
 enum Species {
@@ -127,6 +128,8 @@ model VisitMedication {
   visitId      Int?
   medication   Medication? @relation(fields: [medicationId], references: [id])
   medicationId Int?
+  updatedById  Int?
+  updater      User?       @relation("VisitMedUpdatedBy", fields: [updatedById], references: [id])
 }
 
 enum Frequency {
@@ -176,6 +179,8 @@ model VisitProcedure {
   visitId     Int?
   procedure   Procedure? @relation(fields: [procedureId], references: [id])
   procedureId Int?
+  updatedById Int?
+  updater     User?      @relation("VisitProcUpdatedBy", fields: [updatedById], references: [id])
 }
 
 model Procedure {

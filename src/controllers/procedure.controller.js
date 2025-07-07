@@ -1,4 +1,5 @@
 import * as procedureService from "../services/procedure.service.js";
+import createErrorUtil from "../utils/createError.util.js";
 
 export const getAllProcedures = async (req, res, next) => {
   try {
@@ -19,6 +20,7 @@ export const getProcedureById = async (req, res, next) => {
     if (!result) {
       createErrorUtil(404, "Procedure Not Found");
     }
+    res.json({message: "Procedure Data Retrieved Successfully", result})
   } catch (error) {
     next(error);
   }
@@ -45,7 +47,7 @@ export const updateProcedure = async (req, res, next) => {
     const { id } = req.params;
     const { name, description, cost } = req.body;
     const updaterId = req.user.id;
-    const result = await procedureService.updateMed(
+    const result = await procedureService.updateProcedure(
       +id,
       name,
       description,

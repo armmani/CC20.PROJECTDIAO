@@ -10,6 +10,8 @@ import notfoundMiddleware from "./middlewares/notfound.middleware.js";
 import visitRoute from "./routes/visit.route.js";
 import medRoute from "./routes/med.route.js";
 import procedureRoute from "./routes/procedure.route.js";
+import visitMedRoute from "./routes/visit-med.route.js";
+import visitProcRoute from "./routes/visit-procedure.route.js";
 
 dotenv.config();
 const app = express();
@@ -23,6 +25,8 @@ app.use("/pets", petRoute);
 app.use('/visits', visitRoute)
 app.use('/medications', medRoute)
 app.use('/procedures', procedureRoute)
+app.use('/visit-medications', visitMedRoute)
+app.use('/visit-procedures', visitProcRoute)
 
 app.use(notfoundMiddleware);
 

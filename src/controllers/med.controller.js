@@ -21,6 +21,7 @@ export const getMedById = async (req, res, next) => {
     if (!result) {
       createErrorUtil(404, "Medication Not Found");
     }
+    res.json({message: "Medication Data Retrieved Successfully", result})
   } catch (error) {
     next(error);
   }
@@ -47,7 +48,8 @@ export const updateMed = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { name, type, unit, cost } = req.body;
-    const result = await medService.updateMed(name, type, unit, cost);
+    const updaterId = req.user.id
+    const result = await medService.updateMed(id, name, type, unit, cost, updaterId);
     if (!result) {
       createErrorUtil(404, "Medication Not Found");
     }

@@ -13,9 +13,9 @@ const procedureRoute = express.Router();
 // Endpoint http://localhost:6969/procedures
 
 procedureRoute.get("/", authMiddleware, getAllProcedures);
-procedureRoute.get("/", authMiddleware, getProcedureById);
+procedureRoute.get("/:id", authMiddleware, getProcedureById);
 procedureRoute.post("/", authMiddleware, createProcedure);
-procedureRoute.patch("/", authMiddleware, updateProcedure);
-procedureRoute.delete("/", authMiddleware, deleteProcedure);
+procedureRoute.patch("/:id", authMiddleware, updateProcedure);
+procedureRoute.delete("/:id", authMiddleware, deleteProcedure);
 
 export default procedureRoute

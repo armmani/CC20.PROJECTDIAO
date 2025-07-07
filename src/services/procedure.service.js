@@ -6,7 +6,9 @@ export const getAllProcedures = async (req, res, next) => {
 };
 
 export const getProcedureById = async (id) => {
-  const result = await prisma.procedure.findUnique(id);
+  const result = await prisma.procedure.findUnique({
+    where: { id: +id },
+  });
   return result;
 };
 
@@ -16,13 +18,15 @@ export const createProcedure = async (name, description, cost, creatorId) => {
       name,
       description,
       cost,
-      creatorId
+      creator: {
+        connect: { id: +creatorId },
+      },
     },
   });
   return result;
 };
 
-export const updateProcedure = async (id, name, description, cost) => {
+export const updateProcedure = async (id, name, description, cost, updaterId) => {
   const result = await prisma.procedure.update({
     where: {
       id: +id,
@@ -31,6 +35,9 @@ export const updateProcedure = async (id, name, description, cost) => {
       name,
       description,
       cost,
+      updater: {
+        connect: {id: +updaterId}
+      }
     },
   });
   return result;

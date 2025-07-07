@@ -1,12 +1,14 @@
 import prisma from "../configs/prisma.config.js";
 
-export const getAllMeds = async (req, res, next) => {
+export const getAllMeds = async () => {
   const result = await prisma.medication.findMany();
   return result;
 };
 
 export const getMedById = async (id) => {
-  const result = await prisma.medication.findUnique(id);
+  const result = await prisma.medication.findUnique({
+    where: {id: +id}
+  });
   return result;
 };
 
