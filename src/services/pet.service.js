@@ -1,9 +1,6 @@
 import prisma from "../configs/prisma.config.js";
 
-export const getAllPets = async () => {
-  const result = await prisma.pet.findMany();
-  return result;
-};
+
 
 export const getPetById = async (id) => {
   const result = await prisma.pet.findUnique({
