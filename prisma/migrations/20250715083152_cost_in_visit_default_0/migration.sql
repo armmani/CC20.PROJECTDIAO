@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `Visit` MODIFY `cost` DECIMAL(10, 2) NOT NULL DEFAULT 0;

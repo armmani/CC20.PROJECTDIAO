@@ -45,7 +45,7 @@ export const login = async (req, res, next) => {
       algorithm: "HS256"
     });
     res.json({
-      message: `Welcome ${user.username} as ${user.role}`,
+      message: `${user.username} (${user.role})`,
       payload,
       token,
     });

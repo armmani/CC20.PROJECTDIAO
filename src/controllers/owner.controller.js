@@ -26,7 +26,7 @@ export const getOwnerById = async (req, res, next) => {
 
 export const createOwner = async (req, res, next) => {
   try {
-    const { owner_name, tel_number, line_id, address } = req.body;
+    const { owner_name, tel_number, line_id, address, status } = req.body;
     const creatorId = req.user.id;
     const findOwner = await ownerService.findOwnerTelNum(tel_number);
     if (findOwner) {
@@ -37,6 +37,7 @@ export const createOwner = async (req, res, next) => {
       tel_number,
       line_id,
       address,
+      status,
       creatorId
     );
     res.json({ message: "Owner Created", result });
@@ -49,13 +50,14 @@ export const updateOwner = async (req, res, next) => {
   try {
     const { id } = req.params;
     const updaterId = req.user.id;
-    const { owner_name, tel_number, line_id, address } = req.body;
+    const { owner_name, tel_number, line_id, address, status } = req.body;
     const result = await ownerService.updateOwner(
       +id,
       owner_name,
       tel_number,
       line_id,
       address,
+      status,
       updaterId
     );
     res.json({ message: "Owner Updated", result });

@@ -26,6 +26,7 @@ export const createOwner = async (
   tel_number,
   line_id,
   address,
+  status,
   creatorId
 ) => {
   const result = await prisma.owner.create({
@@ -34,6 +35,7 @@ export const createOwner = async (
       tel_number,
       line_id,
       address,
+      status,
       creator: {
         connect: {
           id: +creatorId,
@@ -44,7 +46,15 @@ export const createOwner = async (
   return result;
 };
 
-export const updateOwner = async (id, owner_name, tel_number, line_id, address, updaterId) => {
+export const updateOwner = async (
+  id,
+  owner_name,
+  tel_number,
+  line_id,
+  address,
+  status,
+  updaterId
+) => {
   const result = await prisma.owner.update({
     where: {
       id: +id,
@@ -54,6 +64,7 @@ export const updateOwner = async (id, owner_name, tel_number, line_id, address, 
       tel_number,
       line_id,
       address,
+      status,
       updater: {
         connect: {
           id: +updaterId,

@@ -5,6 +5,9 @@ export const visitAllProcedures = async (visitId) => {
     where: {
       visitId: +visitId,
     },
+    include: {
+      procedure: true,
+    },
   });
   return result;
 };

@@ -1,6 +1,18 @@
 import prisma from "../configs/prisma.config.js";
 
-
+export const getAllPets = async () => {
+  const result = await prisma.pet.findMany({
+    include: {
+      owner: true,
+      visits: {
+        orderBy: { createdAt: "desc" },
+        take: 1,
+        select: { weight: true, createdAt: true },
+      }
+    }
+  });
+  return result;
+};
 
 export const getPetById = async (id) => {
   const result = await prisma.pet.findUnique({
@@ -54,8 +66,8 @@ export const updatePet = async (
   updaterId
 ) => {
   const result = await prisma.pet.update({
-    where:{
-      id: +id
+    where: {
+      id: +id,
     },
     data: {
       pet_name,
@@ -70,14 +82,14 @@ export const updatePet = async (
       },
     },
   });
-  return result
+  return result;
 };
 
 export const getPetByOwner = async (ownerId) => {
   const result = await prisma.pet.findMany({
     where: {
-      ownerId: +ownerId
-    }
-  })
-  return result
-}
+      ownerId: +ownerId,
+    },
+  });
+  return result;
+};

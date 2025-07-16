@@ -5,6 +5,7 @@ export const visitAllMedications = async (visitId) => {
     where: {
       visitId: +visitId,
     },
+    include: { medication: true },
   });
   return result;
 };
