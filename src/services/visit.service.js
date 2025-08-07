@@ -1,7 +1,18 @@
 import prisma from "../configs/prisma.config.js";
 
 export const getAllVisits = async () => {
-  const result = await prisma.visit.findMany();
+  const result = await prisma.visit.findMany({
+    where: {
+      status: "ACTIVE",
+    },
+    include: {
+      pet: {
+        include: {
+          owner: true,
+        },
+      },
+    },
+  });
   return result;
 };
 
@@ -72,3 +83,13 @@ export const updateVisit = async (
     },
   },
 });
+
+export const softDeleteVisit = async (id) => {
+  const result = await prisma.visit.update({
+    where: { id: +id },
+    data: {
+      status: "INACTIVE",
+    },
+  });
+  return result;
+};

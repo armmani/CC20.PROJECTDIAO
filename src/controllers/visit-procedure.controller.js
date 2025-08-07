@@ -18,10 +18,9 @@ export const visitAddProcedure = async (req, res, next) => {
   try {
     const { visitId } = req.params;
     const creatorId = req.user.id;
-    // console.log("req.user.id", req.user.id);
-    // console.log("req.params", req.params);
+
     const { quantity, unit, notes, cost, procedureId } = req.body;
-    // console.log("req.body", req.body);
+
     const result = await visitProcService.visitAddProcedure({
       quantity,
       unit,
@@ -31,7 +30,6 @@ export const visitAddProcedure = async (req, res, next) => {
       visitId,
       procedureId,
     });
-    // console.log("result", result);
     if (!result) {
       createErrorUtil(404, "Not Found Procedure or Visit");
     }
